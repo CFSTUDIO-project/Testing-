@@ -1,0 +1,11 @@
+{
+  "key.category.vanta.main": "Vanta Client",
+  "key.vanta.open_menu": "Open Vanta GUI",
+  "key.vanta.player_esp": "Toggle Player ESP",
+  "key.vanta.chest_esp": "Toggle Chest ESP",
+  "key.vanta.ore_finder": "Toggle Ore Finder",
+  "key.vanta.mob_esp": "Toggle Hostile ESP",
+  "key.vanta.coordinates": "Toggle Coordinates HUD",
+  "key.vanta.auto_sprint": "Toggle Auto Sprint",
+  "key.vanta.zoom": "Toggle Zoom"
+}
