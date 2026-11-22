@@ -3,9 +3,12 @@ package dev.cfstudio.vanta;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
+import org.lwjgl.glfw.GLFW;
 
 public final class VantaScreen extends Screen {
     private static final long OPEN_DURATION = 260L;
@@ -29,6 +32,15 @@ public final class VantaScreen extends Screen {
     @Override
     public void onClose() {
         beginClose();
+    }
+
+    @Override
+    public boolean keyPressed(KeyEvent event) {
+        if (event.key() == GLFW.GLFW_KEY_RIGHT_SHIFT || event.key() == GLFW.GLFW_KEY_ESCAPE) {
+            beginClose();
+            return true;
+        }
+        return super.keyPressed(event);
     }
 
     @Override
@@ -147,7 +159,10 @@ public final class VantaScreen extends Screen {
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+    public boolean mouseClicked(MouseButtonEvent click, boolean doubleClick) {
+        double mouseX = click.x();
+        double mouseY = click.y();
+        int button = click.button();
         if (button != 0 || closing) {
             return false;
         }
@@ -191,7 +206,7 @@ public final class VantaScreen extends Screen {
             }
         }
 
-        return super.mouseClicked(mouseX, mouseY, button);
+        return false;
     }
 
     private static boolean inside(double mouseX, double mouseY, int x, int y, int w, int h) {
